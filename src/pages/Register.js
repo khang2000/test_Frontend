@@ -20,10 +20,14 @@ const Register = () => {
       };
     });
   };
+  // const [userName, setUserName] = useState();
+  // const [email, setEmail] = useState();
+  // const [password, setPassword] = useState();
+  // const [confirmPassword, setConfirmPassword] = useState();
 
   const addData = (e) => {
     e.preventDefault();
-
+    // const user = { userName, email, password, confirmPassword };
     fetch("http://localhost:8000/api/auth/signup", {
       method: "POST",
       headers: {
@@ -36,62 +40,66 @@ const Register = () => {
       .then((data) => {
         //xu ly logic neu can
         console.log(data);
+        alert(data.message);
         setUser(data.user);
-        if (data.message !== "Dang ky account thanh cong") {
-          alert(data.message);
-        } else {
-          console.log(data);
-          alert(data.message);
-          navigate("/login");
-        }
+        // setUserName(data.user.userName);
+        // setEmail(data.user.email);
+        // setPassword(data.user.password);
+        // if (data.message !== "Đăng ký thành công") {
+        //   alert(data.message);
+        // } else {
+        //   console.log(data);
+        //   alert(data.message);
+        //   navigate("/login");
+        // }
       })
       .catch((error) => console.log(error.message));
   };
 
   return (
     <div>
-      <div className="register-form ">
+      <div className="register-form">
         <h3 className="text-center ">Đăng ký</h3>
         <form>
-          <div className="mb-3 col-lg-6">
+          <div className="mb-3">
             <input
               type="text"
               placeholder="enter your name?"
               className="form-control"
               onChange={getData}
-              //   onChange={(e) => setUserName(e.target.value)}
+              // onChange={(e) => setUserName(e.target.value)}
               name="userName"
             />
           </div>
-          <div className="mb-3 col-lg-6">
+          <div className="mb-3">
             <input
               type="email"
               className="form-control"
               id="exampleInputEmail1"
               placeholder="enter your email?"
               onChange={getData}
-              //   onChange={(e) => setEmail(e.target.value)}
+              // onChange={(e) => setEmail(e.target.value)}
               name="email"
             />
           </div>
 
-          <div className="mb-3 col-lg-6">
+          <div className="mb-3">
             <input
               type="password"
               className="form-control"
               placeholder="password"
               onChange={getData}
-              //   onChange={(e) => setPassword(e.target.value)}
+              // onChange={(e) => setPassword(e.target.value)}
               name="password"
             />
           </div>
-          <div className="mb-3 col-lg-6">
+          <div className="mb-3">
             <input
               type="password"
               className="form-control"
               placeholder="confirmPassword"
               onChange={getData}
-              //   onChange={(e) => setConfirmPassword(e.target.value)}
+              // onChange={(e) => setConfirmPassword(e.target.value)}
               name="confirmPassword"
             />
           </div>
@@ -99,7 +107,7 @@ const Register = () => {
           <button
             type="submit"
             onClick={addData}
-            className="btn btn-primary col-lg-6"
+            className="btn btn-primary center"
           >
             Submit
           </button>
