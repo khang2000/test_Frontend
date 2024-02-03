@@ -8,9 +8,7 @@ const Header = () => {
   const id = localStorage.getItem("id");
   const token = localStorage.getItem("token");
   const userLogout = () => {
-    // localStorage.removeItem("user");
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("role");
+  
     localStorage.clear();
 
     history("/login");

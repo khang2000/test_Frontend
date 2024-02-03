@@ -40,18 +40,15 @@ const Register = () => {
       .then((data) => {
         //xu ly logic neu can
         console.log(data);
-        alert(data.message);
-        setUser(data.user);
-        // setUserName(data.user.userName);
-        // setEmail(data.user.email);
-        // setPassword(data.user.password);
-        // if (data.message !== "Đăng ký thành công") {
-        //   alert(data.message);
-        // } else {
-        //   console.log(data);
-        //   alert(data.message);
-        //   navigate("/login");
-        // }
+
+        if (data.message !== "Đăng ký thành công!") {
+          alert(data.message);
+        } else {
+          console.log(data);
+          alert(data.message);
+          setUser(data.user);
+          navigate("/login");
+        }
       })
       .catch((error) => console.log(error.message));
   };
